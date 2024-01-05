@@ -73,6 +73,7 @@ user.location;
 - 프로그래밍 도구로서의 타입
 - tsc, TypeScript 컴파일러
 - 명시적 타입
+  - ts가 타입 추론을 하지 못할 때 명시적으로 알려주어야 함
 - [엄격도](https://www.typescriptlang.org/ko/docs/handbook/2/basic-types.html#%EC%97%84%EA%B2%A9%EB%8F%84)(`"strict": true` 플래그)
   - noImplicitAny
   - strictNullChecks
@@ -165,7 +166,22 @@ printCoord({ x: 3, y: 7 });
 - 각 프로퍼티를 구분할 때 , 또는 ;를 사용가능
 - 가장 마지막에 위치한 구분자의 표기는 선택 사항
 
-### 옵셔널 프로퍼티
+### 옵셔널 파라미터(선택적 변수)
+
+```javascript
+const player: {
+  name: string,
+  age?: number,
+} = {
+  name: "John",
+};
+//'player.age'가 정의되어 있는지 (즉, undefined가 아닌지) 먼저 확인한 후 그 값이 10보다 작은지 확인
+if (player.age && player.age < 10) {
+  //goes on...
+}
+```
+
+### 옵셔널 프로퍼티(선택적 속성?)
 
 ```javascript
 function printName(obj: { first: string, last?: string }) {
